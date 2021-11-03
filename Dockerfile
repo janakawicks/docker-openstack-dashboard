@@ -11,6 +11,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5EDB1B62EC4926EA
 RUN apt-get update && \
 	DEBIAN_FRONTEND="noninteractive" apt-get install -y openstack-dashboard
 
+RUN apt-get install -y libapache2-mod-auth-openidc && a2enmod auth_openidc
+
 RUN rm -rf /var/lib/apt/lists/*
 
 VOLUME ["/var/www", "/var/log/apache2", "/etc/apache2",  \
